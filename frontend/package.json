@@ -15,6 +15,10 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@types/eslint": "^8.56.10",
+    "@types/eslint-scope": "^3.7.7",
+    "@types/estree": "^1.0.5",
+    "@types/json-schema": "^7.0.15",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
