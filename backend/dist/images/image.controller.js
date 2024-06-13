@@ -27,8 +27,12 @@ let ImageController = class ImageController {
     findAll() {
         return this.imageService.findAll();
     }
-    findOne(id) {
-        return this.imageService.findOne(id);
+    async findOne(id) {
+        const image = await this.imageService.findOne(+id);
+        if (!image) {
+            throw new common_1.NotFoundException('Image not found');
+        }
+        return image;
     }
     update(id, updateImageDto) {
         return this.imageService.update(id, updateImageDto);
@@ -55,8 +59,8 @@ __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
 ], ImageController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Put)(':id'),

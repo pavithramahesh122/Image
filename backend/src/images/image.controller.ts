@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 // src/image/image.controller.ts
-import { Controller, Post, Body, Get, Param, Put, Delete } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Put, Delete, NotFoundException } from '@nestjs/common';
 import { ImageService } from './image.service';
 import { CreateImageDto } from './dto/create-image.dto';
 import { UpdateImageDto } from './dto/update-image.dto';
@@ -20,8 +20,12 @@ export class ImageController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number) {
-    return this.imageService.findOne(id);
+  async findOne(@Param('id') id: string) {
+    const image = await this.imageService.findOne(+id);
+    if (!image) {
+      throw new NotFoundException('Image not found');
+    }
+    return image;
   }
 
   @Put(':id')
