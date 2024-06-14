@@ -18,27 +18,27 @@ const image_service_1 = require("./image.service");
 const create_image_dto_1 = require("./dto/create-image.dto");
 const update_image_dto_1 = require("./dto/update-image.dto");
 let ImageController = class ImageController {
-    constructor(imageService) {
-        this.imageService = imageService;
+    constructor(productService) {
+        this.productService = productService;
     }
-    create(createImageDto) {
-        return this.imageService.create(createImageDto);
+    create(createProductDto) {
+        return this.productService.create(createProductDto);
     }
     findAll() {
-        return this.imageService.findAll();
+        return this.productService.findAll();
     }
     async findOne(id) {
-        const image = await this.imageService.findOne(+id);
-        if (!image) {
-            throw new common_1.NotFoundException('Image not found');
+        const product = await this.productService.findOne(+id);
+        if (!product) {
+            throw new common_1.NotFoundException('Product not found');
         }
-        return image;
+        return product;
     }
-    update(id, updateImageDto) {
-        return this.imageService.update(id, updateImageDto);
+    update(id, updateProductDto) {
+        return this.productService.update(id, updateProductDto);
     }
     remove(id) {
-        return this.imageService.remove(id);
+        return this.productService.remove(id);
     }
 };
 exports.ImageController = ImageController;
@@ -78,7 +78,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ImageController.prototype, "remove", null);
 exports.ImageController = ImageController = __decorate([
-    (0, common_1.Controller)('images'),
+    (0, common_1.Controller)('products'),
     __metadata("design:paramtypes", [image_service_1.ImageService])
 ], ImageController);
 //# sourceMappingURL=image.controller.js.map
