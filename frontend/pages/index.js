@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 208db37f6760e0c467d4a87e77127470a504d242
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -15,7 +18,7 @@ export default function Home() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/images');
+      const response = await axios.get('http://localhost:3001/products');
       setProducts(response.data);
       setSelectedProduct(response.data[0]); // Select the first product by default
     } catch (error) {
@@ -25,7 +28,11 @@ export default function Home() {
 
   const handleStatusUpdate = async (id, newStatus) => {
     try {
+<<<<<<< HEAD
       await axios.put(`http://localhost:3001/images/${id}`, { status: newStatus });
+=======
+      await axios.put(`http://localhost:3001/products/${id}`, { status: newStatus });
+>>>>>>> 208db37f6760e0c467d4a87e77127470a504d242
       fetchProducts();
     } catch (error) {
       console.error('Error updating product status:', error);
