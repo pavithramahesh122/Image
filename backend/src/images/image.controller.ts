@@ -38,3 +38,4 @@ export class ImageController {
     return this.productService.remove(id);
   }
 }
+
