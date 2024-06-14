@@ -14,7 +14,7 @@ export default function Home() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/images');
+      const response = await axios.get('http://localhost:3001/products');
       setProducts(response.data);
       setSelectedProduct(response.data[0]); // Select the first product by default
     } catch (error) {
@@ -24,7 +24,7 @@ export default function Home() {
 
   const handleStatusUpdate = async (id, newStatus) => {
     try {
-      await axios.put(`http://localhost:3001/images/${id}`, { status: newStatus });
+      await axios.put(`http://localhost:3001/products/${id}`, { status: newStatus });
       fetchProducts();
     } catch (error) {
       console.error('Error updating product status:', error);
@@ -241,7 +241,7 @@ export default function Home() {
                   <p><strong>ID:</strong> {selectedProduct.id}</p>
                   <p><strong>Product ID:</strong> {selectedProduct.fdc_product_id}</p>
                   <p><strong>Name:</strong> {selectedProduct.name}</p>
-                  <p><strong>Product Image URI:</strong> {selectedProduct.product_image_uri}</p>
+                  <p><strong>Product Image URI:</strong> {selectedProduct.product_image_uri} </p>
                   <p><strong>Description:</strong> {selectedProduct.product_description}</p>
                   <p><strong>Dimensions:</strong> {selectedProduct.product_dimensions}</p>
                   <p><strong>Created At:</strong> {selectedProduct.created_at}</p>
